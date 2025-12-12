@@ -1,0 +1,376 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highest Bridges - Amazing Bridges</title>
+    <!-- Link to Bootstrap CSS file -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous">
+    <!-- Bootstrap JavaScript file -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to custom CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+      /* CSS for dropdown */
+          .dropdown {
+            position: relative;
+            display: inline-block;
+          }
+        
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 10%;
+          }
+        
+          .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+          }
+        
+          .dropdown:hover .dropdown-content {
+            display: block;
+          }
+        
+          /* Reset padding and margin for all elements */
+          body {
+            font-family: 'Arial, Helvetica, sans-serif';
+            margin: 0;
+            padding: 0;
+          }
+        
+          /* Navbar styles */
+          .navbar {
+            padding: 20px;
+            background-color: transparent;
+            transition: all 2s;
+          }
+        
+          .navbar .logo {
+            font-size: 24px;
+            margin-right: 20px;
+            margin-left: 10px;
+          }
+        
+          .navbar .navitems {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+          }
+        
+          .navbar li {
+            margin-right: 20px;
+          }
+        
+          .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+          }
+        
+          .navbar {
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            z-index: 100;
+            min-height: 80px;
+            flex-wrap: wrap;
+            align-items: center;
+            font-size: 18px;
+            margin-top: 5px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.137);
+            backdrop-filter: blur(9.5px);
+            -webkit-backdrop-filter: blur(9.5px);
+            border-radius: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.18);
+          }
+        
+          .navbar .toggle-btn {
+            color: black;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            margin-right: 50px;
+          }
+        
+          .navbar div a {
+            display: flex;
+            justify-content: center;
+            font-size: 35px;
+            font-weight: 500;
+            font-family: 'Arial, Helvetica, sans-serif';
+            padding-left: 20px;
+            color: #f0f2f0;
+            text-decoration: none;
+          }
+        
+          div .navitems {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+            padding-right: 20px;
+            align-items: center;
+          }
+        
+          div .navitems a {
+            color: #f0f2f0;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 400;
+            font-family: 'Arial, Helvetica, sans-serif';
+          }
+        
+          .navbar {
+            background-color: transparent;
+            transition: all 2s;
+          }
+        
+          .logo h1 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #333;
+          }
+        
+          .navitems {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+          }
+        
+          .navitems a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 10px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+          }
+        
+          .navitems a:hover {
+            color: #000;
+          }
+    
+          #bars {
+            color: #fffcfc;
+          }
+        
+          @media (max-width: 768px) {
+            .navbar .nav-container {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+            }
+        
+            .navbar .navitems {
+              flex-direction: column;
+              align-items: flex-start;
+              display: none;
+              width: 100%;
+            }
+        
+            .navbar .navitems a {
+              padding: 10px;
+              width: 100%;
+              box-sizing: border-box;
+            }
+        
+            .navbar .toggle-btn {
+              display: block;
+            }
+        
+            .navbar .navitems.show {
+              display: flex;
+            }
+          }
+        </style>
+<style>
+  body, html {
+      height: 100%;
+      margin: 0;
+  }
+
+  .picture {
+      display: flex;
+      justify-content: center; /* Centers the image horizontally */
+      align-items: center; /* Centers the image vertically */
+      height: 100%; /* Full height to center within the viewport */
+  }
+
+  .picture img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .picture img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+</style>
+     
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar" style="background-color: transparent;transition: all 2s;">
+    <div class="logo">
+        <h1>
+            <a href="../../index.html">Amazing Bridges</a>
+        </h1>
+    </div>
+    <div>
+        <ul class="navitems">
+            <a href="../../index.html"><li>Home</li></a>
+            <a href="../../about/about.html"><li>About</li></a>
+            <a href="../../contact/contact.html"><li>Contact</li></a>
+            <li class="dropdown">
+              <a href="javascript:void(0);" class="dropbtn">Bridges Category</a>
+              <div class="dropdown-content">
+                  <a href="../../category/Longest Bridges/longest.html">Longest Bridge</a>
+                  <a href="../../category/Oldest Bridges/oldest.html">Oldest Bridge</a>
+                  <a href="../../category/Tallest Bridges/tallest.html">Tallest Bridge</a>
+                  <a href="../../category/Oldest Bridges/oldest.html">Highest Bridge</a>
+              </div>
+          </li>
+            <a href="../../gallery/gallery.html"><li>Gallery</li></a>
+        </ul>
+    </div>
+</div>
+  
+
+    <header class="page-header">
+      <div class="container">
+          <h1>Highest Bridges</h1>
+          <p>Explore some of the highest bridges in the world that span vast distances, connecting cities and countries with engineering marvels.</p>
+      </div>
+  </header>
+  
+  <section class="bridge-details">
+      <div class="container">
+          <h2>The Glen Canyon Bridge</h2>
+          <div class="picture">
+          <img src="img27.jpg" alt="The Glen Canyon Bridge">
+        </div>
+        <p><strong>The Glen Canyon Bridge or Glen Canyon Dam Bridge is a steel arch bridge in Coconino County, Arizona, carrying U.S. Route 89 across the Colorado River. The bridge was originally built by the United States Bureau of Reclamation to facilitate transportation of materials for the Glen Canyon Dam, which lies adjacent to the bridge just 865 feet (264 m) upstream. The two-lane bridge has an overall length of 1,271 feet (387 m) with a deck 700 feet (210 m) above the river, making it one of the highest bridges in the United States. The bridge was the highest arch bridge in the world when completed in 1959.</strong>The <strong>Glen Canyon Bridge, also known as the Glen Canyon Dam Bridge, is a significant arch bridge located in northern Arizona, USA</strong>. it spans the Colorado River near Page, Arizona, and serves as a vital link for U.S. Route 89 across the canyon. The bridge is notable for its beautiful design and its strategic location near the Glen Canyon Dam, which forms Lake Powell, one of the largest reservoirs in the United States. Its construction was part of the larger Glen Canyon Dam project, which aimed to control the flow of the Colorado River and provide hydroelectric power and water storage for the region.</p>
+        </div>
+
+
+      <div class="container">
+        <h2>Beipan River Guanxing Highway Bridge</h2>
+        <div class="picture">
+        <img src="img28.jpg" alt="Beipan River Guanxing Highway Bridge">
+      </div>
+      <p><strong>The Beipan River Guanxing Highway Bridge</strong> or <strong>Beipanjiang River 2003 Bridge</strong> is a 366-metre-high suspension bridge on the Guanxing Highway near Xingbei Town (Xinbeizhen), Zhenfeng County, Guizhou Province, China. The bridge has a span length of 388 metres. When it opened in 2003, it was the world's highest bridge, and it held that title until the opening of the Hegigio Gorge Pipeline Bridge in 2005. When the bridge was completed in 2003 it was the highest in the world, sitting 366 metres above the Beipan River. The bridge became the second Chinese span in two years to take the record. The first was the Liuguanghe Bridge in 2001. In 2009 a dam was constructed downstream from the bridge, reducing the drop to the water slightly.
+
+      The <strong>Beipan River Guanxing Highway Bridge</strong> was the first suspension bridge to break the 1,000-foot (300 m) and 300-metre height thresholds (the Liuguanghe Bridge also passes these thresholds but is a beam bridge) as well as the first suspension bridge in the world to surpass the height of Colorado’s Royal Gorge Bridge after a 74-year reign. The bridge is also the second of three Beipan River crossings to have been among the world's ten highest. The first was the 902-foot-high (275 m) <strong>Beipanjiang River Railway Bridge</strong>, which opened in 2001 and was the highest train bridge in the world until 2016 when China's Najiehe Railway Bridge and Qinglong Railway Bridge were opened. The <strong>Beipan River Hukun Expressway Bridge</strong>, the third bridge to cross high above the Beipanjiang, opened in 2009 on the Guiyang-to-Kunming Highway with a suspension span 1,083 feet (330 m) above the river.</p>
+      </div>
+
+
+    <div class="container">
+      <h2>New River Gorge Bridge</h2>
+      <div class="picture">
+      <img src="img30.jpg" alt="New River Gorge Bridge">
+    </div>
+      <p>The <strong>New River Gorge Bridge</strong> is a steel arch bridge <strong>3,030 feet (924 m)</strong> long over the New River Gorge near <strong>Fayetteville, West Virginia</strong>, in the Appalachian Mountains of the eastern United States. With an arch <strong>1,700 feet (518 m)</strong> long, the <strong>New River Gorge Bridge</strong> was the world's longest single-span arch bridge for 26 years; it is now the fifth longest; the longest outside of China. Part of <strong>U.S. Route 19</strong>, its construction marked the completion of Corridor L of the Appalachian Development Highway System. An average of <strong>16,200 motor vehicles</strong> cross the bridge each day.
+
+        The roadway of the <strong>New River Gorge Bridge</strong> is <strong>876 feet (267 m)</strong> above the New River, making the bridge one of the highest vehicular bridges in the world; it is the third highest in the United States. When completed in 1977, it was the world's highest bridge carrying a regular roadway, a title it held until the 2001 opening of the <strong>Liuguanghe Bridge</strong> in China. Because of its height, the bridge has attracted daredevils since its construction. It is now the centerpiece of the annual <strong>"Bridge Day"</strong>, during which hundreds of people, with appropriate equipment, are permitted to climb on or jump from the bridge. In 2005, the structure gained additional attention when the U.S. Mint issued the <strong>West Virginia state quarter</strong> with the bridge depicted on one side. In 2013, the bridge was listed on the <strong>National Register of Historic Places</strong>.</p>
+    </div>
+
+    
+    <div class="container">
+      <h2>The Mike O'Callaghan–Pat Tillman Memorial Bridge</h2>
+      <div class="picture">
+      <img src="img31.jpg" alt="The Mike O'Callaghan–Pat Tillman Memorial Bridge">
+    </div>
+    <p>The Mike O'Callaghan–Pat Tillman Memorial Bridge is an arch bridge in the United States that spans the Colorado River between the states of Arizona and Nevada. The bridge is located within the Lake Mead National Recreation Area approximately 30 miles (48 km) southeast of Las Vegas, and carries Interstate 11 and U.S. Route 93 over the Colorado River. Opened in 2010, it was the key component of the Hoover Dam Bypass project, which rerouted US 93 from its previous routing along the top of Hoover Dam and removed several hairpin turns and blind curves from the route. It is jointly named for <strong>Mike O'Callaghan</strong>, Governor of Nevada from 1971 to 1979, and <strong>Pat Tillman</strong>, an American football player who left his career with the Arizona Cardinals to enlist in the United States Army and was killed in Afghanistan in 2004 by friendly fire. As early as the 1960s, officials identified the US 93 route over Hoover Dam to be dangerous and inadequate for projected traffic volumes. From 1998 to 2001, officials from Arizona, Nevada, and several federal government agencies collaborated to determine the best routing for an alternative river crossing. In March 2001, the Federal Highway Administration selected the route, which crosses the Colorado River approximately 1,500 feet (460 m) downstream of Hoover Dam. Construction of the bridge approaches began in 2003, and construction of the bridge itself began in February 2005. The bridge was completed in 2010 and the entire bypass route opened to vehicle traffic on October 19, 2010. The Hoover Dam Bypass project was completed within budget at a cost of $240 million; the bridge portion cost $114 million. The bridge was the first <strong>concrete-steel composite deck arch bridge</strong> built in the United States, and incorporates the widest concrete arch in the Western Hemisphere. At 890 feet (270 m) above the Colorado River, it is the second highest bridge in the United States after the Royal Gorge Bridge near Cañon City, Colorado.Project design was by the Hoover Support team, led by HDR, Inc. and including T.Y. Lin International, Sverdrup Civil, Inc., and other specialist contributors.The bridge has a length of 1,900 feet (579 m) and a 1,060 ft (320 m) span.The roadway is 900 ft (270 m)above the Colorado River and four lanes wide.This is the first concrete-and-steel composite arch bridge built in the United States. It includes the widest concrete arch in the Western Hemisphere and is also the second highest bridge in the nation, with the arch 840 ft (260 m) above the river.The twin arch ribs are connected by steel struts.</p>
+    </div>
+
+    <div class="container">
+      <h2>The Royal Gorge Bridge</h2>
+      <div class="picture">
+      <img src="img32.jpg" alt="The Royal Gorge Bridge">
+    </div>
+    <p><strong>The Royal Gorge Bridge is a tourist attraction near Cañon City, Colorado within Royal Gorge Bridge and Park, a 360-acre (150 ha) amusement park located along the edge of the Royal Gorge around both ends of the bridge. The bridge crosses the gorge 955 feet (291 m)[note 1] above the Arkansas River and held the record of highest bridge in the world from 1929 until 2001 when it was surpassed by the Liuguanghe Bridge in China. The Royal Gorge Bridge maintained the title of the world's highest suspension bridge until the Beipan River Guanxing Highway Bridge was completed in 2003, also in China. The bridge remains the highest bridge in the United States and was among the ten highest bridges in the world until 2012.</strong>
+
+    The main span of the bridge between the towers is 880 feet (268 m),[note 2] the total length is 1,260 feet (384 m), the width is 18 feet (5.5 m) and the towers are 150 feet (46 m) high. The steel base structure is covered with 1292 wooden planks.
+
+    <strong>The bridge was built in six months between June and November 1929 at a cost of $350,000 (equivalent to $4.9 million in 2023 dollars). In 1931, the Incline Railway, or simply the Incline (also known as a funicular), was added beside the bridge to reach the bottom of the gorge. In the 1950s, a miniature railroad was built by the edge of the gorge and an aerial tram was opened in 1969. In the early 1980s, the bridge was renovated with new cable anchors, suspension rods and paint. A Skycoaster attraction was added in 2003, with riders being swung out over the edge of the gorge.</strong>
+
+    <strong>In June 2013, a wildfire destroyed most of the park's buildings and the aerial tram, and damaged the Incline. The bridge sustained only slight damage to the wooden deck and was otherwise undamaged, along with the Skycoaster. The park was rebuilt and partially reopened in August 2014. The park had a grand reopening in May 2015 with new gondolas and a new zip-line crossing the gorge on the east side of the bridge. Construction began on June 5, 1929 and ended in November 1929. The bridge cost $350,000 and was constructed as a tourist attraction, not as a through route for transportation purposes.</strong> The road leading to the bridge from U.S. Route 50 continues on the south side of the gorge eventually re-connecting with Route 50; however, all visitors are required to enter and exit through the north park gate. Passenger vehicles are not allowed to cross the bridge. The road leading to and across the bridge from Route 50 is designated as Fremont County Road 3A and begins about 10 mi (16 km) west of Cañon City. The Royal Gorge Route Railroad runs under the bridge along the base of Royal Gorge.</p>
+
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+    <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+      <div class="row">
+        <div class="col-lg-3 mb-3">
+          <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="Bootstrap">
+            <span class="fs-5"><h3>Amazing Bridge</h3></span>
+          </a>
+          <ul class="list-unstyled small">
+            <h5>At Amazing Bridge, we celebrate the architectural marvels and engineering feats of bridges worldwide. Explore stunning images and fascinating histories of these iconic structures with us.</h5><br>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+          <h5>Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="../../index.html">Home</a></li>
+            <li class="mb-2"><a href="../../about/about.html">About Us</a></li>
+            <li class="mb-2"><a href="../../contact/contact.html">Contact Us</a></li>
+            <li class="mb-2"><a href="../../Gallery/gallery.html">Gallery</a></li>
+            <li class="mb-2"><a href="../../Feedback/feedback.html">Feedback</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Categories</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="../../category/Longest Bridges/longest.html">Longest Bridges</a></li>
+            <li class="mb-2"><a href="../../category/Highest Bridges/highest.html">Highest Bridges</a></li>
+            <li class="mb-2"><a href="../../category/Tallest Bridges/tallest.html">Tallest Bridges</a></li>
+            <li class="mb-2"><a href="../../category/Oldest Bridges/oldest.html">Oldest Bridges</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Bridges Journey</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="../../bridgejourney/bridgejourney.html">Bridges Journey</a></li>
+            <li class="mb-2"><a href="../../bridges/bridges.html">Bridges</a></li>
+            <li class="mb-2"><a href="../../bridgejourney/bookticket/bookticket.html">Bookticket</a></li>
+            <li class="mb-2"><a href="../../bridgejourney/guide/guide.html">Bridges Guides</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

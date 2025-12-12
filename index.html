@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- link to CDN Font Awesome -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link to AOS CSS file -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- AOS JavaScript file -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Link to Bootstrap CSS file -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous">
+    <!-- Bootstrap JavaScript file -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+      <!-- link to Java Script Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to custom CSS file -->
+    <link rel="stylesheet" href="./index.css">
+    <title>Amazing Bridges</title>
+    <style>
+      /* CSS for dropdown */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+    
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 10%;
+      }
+    
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+    
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+    
+      /* Reset padding and margin for all elements */
+      body {
+        font-family: 'Arial, Helvetica, sans-serif';
+        margin: 0;
+        padding: 0;
+      }
+    
+      /* Navbar styles */
+      .navbar {
+        padding: 20px;
+        background-color: transparent;
+        transition: all 2s;
+      }
+    
+      .navbar .logo {
+        font-size: 24px;
+        margin-right: 20px;
+        margin-left: 10px;
+      }
+    
+      .navbar .navitems {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+      }
+    
+      .navbar li {
+        margin-right: 20px;
+      }
+    
+      .navbar a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+    
+      .navbar {
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        width: 100%;
+        z-index: 100;
+        min-height: 80px;
+        flex-wrap: wrap;
+        align-items: center;
+        font-size: 18px;
+        margin-top: 5px;
+        background: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.137);
+        backdrop-filter: blur(9.5px);
+        -webkit-backdrop-filter: blur(9.5px);
+        border-radius: 40px;
+        border: 1px solid rgba(0, 0, 0, 0.18);
+      }
+    
+      .navbar .toggle-btn {
+        color: black;
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+        margin-right: 50px;
+      }
+    
+      .navbar div a {
+        display: flex;
+        justify-content: center;
+        font-size: 35px;
+        font-weight: 500;
+        font-family: 'Arial, Helvetica, sans-serif';
+        padding-left: 20px;
+        color: #f0f2f0;
+        text-decoration: none;
+      }
+    
+      div .navitems {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        list-style: none;
+        padding-right: 20px;
+        align-items: center;
+      }
+    
+      div .navitems a {
+        color: #f0f2f0;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 400;
+        font-family: 'Arial, Helvetica, sans-serif';
+      }
+    
+      .navbar {
+        background-color: transparent;
+        transition: all 2s;
+      }
+    
+      .logo h1 {
+        margin: 0;
+        font-size: 1.5em;
+        color: #333;
+      }
+    
+      .navitems {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+    
+      .navitems a {
+        text-decoration: none;
+        color: #333;
+        margin: 0 10px;
+        font-size: 1.1em;
+        transition: color 0.3s;
+      }
+    
+      .navitems a:hover {
+        color: #000;
+      }
+
+      #bars {
+        color: #ffffff;
+      }
+    
+      @media (max-width: 768px) {
+        .navbar .nav-container {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+    
+        .navbar .navitems {
+          flex-direction: column;
+          align-items: flex-start;
+          display: none;
+          width: 100%;
+        }
+    
+        .navbar .navitems a {
+          padding: 10px;
+          width: 100%;
+          box-sizing: border-box;
+        }
+    
+        .navbar .toggle-btn {
+          display: block;
+        }
+    
+        .navbar .navitems.show {
+          display: flex;
+        }
+      }
+    </style>
+
+     
+  </head>
+  <body>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init();
+  </script>
+
+      <!-- Navbar -->
+<div class="navbar">
+  <div class="logo">
+    <h1><a href="./index.html">Amazing Bridges</a></h1>
+  </div>
+  <div class="nav-container">
+    <ul class="navitems">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./about/about.html">About</a></li>
+      <li><a href="./contact/contact.html">Contact</a></li>
+      <li class="dropdown">
+        <a href="javascript:void(0);" class="dropbtn">Bridges Category</a>
+        <div class="dropdown-content">
+          <a href="./category/Longest Bridges/longest.html">Longest Bridge</a>
+          <a href="./category/Oldest Bridges/oldest.html">Oldest Bridge</a>
+          <a href="./category/Tallest Bridges/tallest.html">Tallest Bridge</a>
+          <a href="./category/Highest Bridges/highest.html">Highest Bridge</a>
+        </div>
+      </li>
+      <li><a href="./gallery/gallery.html">Gallery</a></li>
+    </ul>
+    <div class="toggle-btn" onclick="toggleMenu()"  id="bars">
+      <i class="fa fa-bars"></i>
+    </div>
+  </div>
+</div>
+  
+<!-- header -->
+ <div class="video">
+
+ <video autoplay loop muted plays-inline class="background-clip">
+  <source src="./2254222-hd_1920_1080_24fps.mp4" type="video/mp4">
+ </video> 
+      <div class="vchild">
+         <h1>Amazing Bridges</h1>
+         <p id="cntn">Embark on a journey through the world's most iconic and breathtaking bridges with Amazing Bridges, where history, beauty, and innovation converge to inspire and captivate your imagination.</p>
+         <a href="./bridges/bridges.html">Explore more</a>
+    </div>
+    
+ </div>
+
+
+
+    <!-- intro Section -->
+  </section>
+  <section class="intro-section">
+    <div class="container">
+      <div data-aos="zoom-in-down"
+        data-aos-duration="2000">
+        <h2>Why Bridges Matter</h2>
+        <p>Bridges play a crucial role in our lives by facilitating
+          transportation and connectivity. They allow for the seamless movement
+          of people and goods across natural barriers like rivers and valleys,
+          which is vital for local and national economies. Bridges reduce travel
+          time and distances, making commutes more efficient and supporting the
+          timely delivery of goods and services. Beyond their practical
+          benefits, bridges often hold cultural and architectural significance,
+          symbolizing human ingenuity and the ability to connect
+          communities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <div class="container">
+    <div data-aos="zoom-in-down"
+      data-aos-duration="2000">
+      <h1>Classified Bridge Information</h1>
+      <div class="categories">
+        <div class="category">
+          <h2>By Country</h2>
+          <p>Explore global bridges by country, showcasing unique architectural
+            styles and engineering feats that reflect cultural heritage.</p>
+        </div>
+        <div class="category">
+          <h2>By Distinction</h2>
+          <p>Explore the longest, tallest, oldest, and most unique bridges in
+            our catalog. Uncover their records and construction stories.</p>
+        </div>
+        <div class="category">
+          <h2 class="bottom">By Type</h2>
+          <p>Discover diverse bridge styles like suspension and truss. Learn
+            their defining engineering principles and innovations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featurette 1 -->
+  <div class="featurette">
+    <div class="image-container">
+      <div data-aos="fade-down-right"
+        data-aos-duration="1000">
+        <img src="./pexels-airamdphoto-15883235 copy.jpg"
+          alt="Golden Gate Bridge">
+      </div>
+    </div>
+    <div class="content">
+      <div data-aos="fade-down-right"
+        data-aos-duration="1000">
+        <h2 class="featurette-heading">Golden Gate Bridge</h2>
+        <p class="lead">Spanning the strait connecting San Francisco Bay to the
+          Pacific Ocean, the Golden Gate Bridge is renowned as California's
+          iconic landmark and the world's most photographed bridge.</p>
+
+        <h3>History and Construction</h3>
+        <p class="lead">Proposed by Joseph Strauss in the 1920s, construction
+          began in 1933 and completed in 1937 despite challenges like strong
+          tides and fog.</p>
+
+        <h3>Construction and Challenges</h3>
+        <p class="lead">Built between 1933 and 1937, the Golden Gate Bridge
+          spans 4,200 feet with towers reaching 746 feet high. Overcoming strong
+          tides, deep waters, and dense fog, it employed innovative construction
+          methods. Tragically, 11 lives were lost, leading to pioneering safety
+          measures like the introduction of a safety net.</p>
+
+        <h3>Architectural Features</h3>
+        <p class="lead">Known for its Art Deco design and distinctive
+          International Orange color, the bridge's towers rise 746 feet above
+          the water, setting records upon opening.</p>
+
+        <h3>Impact and Legacy</h3>
+        <p class="lead">Despite initial skepticism, the bridge now connects San
+          Francisco to Marin County, symbolizing resilience during the Great
+          Depression and attracting millions of visitors annually.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featurette 2 -->
+  <div class="featurette">
+    <div class="content">
+      <div data-aos="fade-down-left"
+        data-aos-duration="1000">
+        <h2 class="featurette-heading">Tower Bridge <span></span></h2>
+        <p class="lead">Construction of Tower Bridge began in 1886 and completed
+          in 1894, a landmark achievement in late 19th-century London. Designed
+          by Sir Horace Jones and Sir John Wolfe Barry, it combined a bascule
+          and suspension bridge to handle both river traffic and road transport
+          across the Thames.</p>
+
+        <h3>Historical Background</h3>
+        <p class="lead">Tower Bridge was conceived to alleviate congestion
+          downstream from London Bridge. Its innovative design reflects
+          Victorian engineering ingenuity.</p>
+
+        <h3>Construction and Challenges</h3>
+        <p class="lead">Overcoming technical challenges, Tower Bridge used over
+          11,000 tons of steel and involved 400+ workers to create a bridge
+          accommodating tall ships and road traffic.</p>
+
+        <h3>Architectural Features</h3>
+        <p class="lead">Tower Bridge in London features iconic Victorian Gothic
+          towers standing 213 feet tall. Its design includes intricate detailing
+          and a unique bascule mechanism for raising the central span to allow
+          river traffic.</p>
+
+        <h3>Impact and Legacy</h3>
+        <p class="lead">Tower Bridge is a symbol of London's engineering prowess
+          and Victorian innovation, attracting visitors with its unique design
+          and operational lift mechanism.</p>
+      </div>
+    </div>
+    <div class="image-container">
+      <div data-aos="fade-down-left"
+        data-aos-duration="1000">
+        <img src="./pexels-yosstraore-2611487.jpg" alt="Tower Bridge Image">
+      </div>
+    </div>
+  </div>
+
+  <!-- Featurette 3 -->
+  <div class="featurette">
+    <div class="image-container">
+      <div data-aos="fade-down-right"
+        data-aos-duration="1000">
+        <img src="./pexels-joshuaworoniecki-2570208.jpg"
+          alt="Placeholder Image">
+      </div>
+    </div>
+    <div class="content">
+      <div data-aos="fade-down-right"
+        data-aos-duration="1000">
+        <h2 class="featurette-heading"> The Brooklyn Bridge</h2>
+        <p class="lead">Spans the East River, connecting Manhattan and Brooklyn,
+          symbolizing New York City's innovation.</p>
+
+        <h3>History and Construction</h3>
+        <p class="lead">Completed in 1883, it was the world's longest suspension
+          bridge at the time. Designed by John A. Roebling, overseen by his son
+          Washington Roebling and later managed by Emily Warren Roebling.</p>
+
+        <h3>Construction and Challenges</h3>
+        <p class="lead">Built 1870-1883, the Brooklyn Bridge faced pioneering
+          engineering hurdles as one of the first large suspension bridges.
+          Designed by John A. Roebling, managed by his son Washington, it saw
+          setbacks, including Washington's illness from decompression sickness.
+          Emily Warren Roebling crucially oversaw construction.</p>
+
+        <h3>Architectural Features</h3>
+        <p class="lead">Features neo-Gothic stone towers standing 278 feet tall,
+          using materials like limestone, granite, and cement from various
+          locations.</p>
+
+        <h3>Impact and Legacy</h3>
+        <p class="lead">A global tourist attraction, admired for its elegance
+          and engineering, enhancing NYC's development.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featurette 4 -->
+  <div class="featurette">
+    <div class="content">
+      <div data-aos="fade-down-left"
+        data-aos-duration="1000">
+        <h2 class="featurette-heading">The Millau Viaduct</h2>
+        <p class="lead">The Millau Viaduct is a cable-stayed bridge completed in
+          2004 across the Tarn Valley near Millau, Southern France. It spans
+          2,460 meters with a height of 336.4 meters, making it the tallest
+          bridge in the world as of October 2023.</p>
+
+        <h3>Historical Background</h3>
+        <p class="lead">Initially conceived to ease traffic congestion, planning
+          began in the late 20th century, and construction started in 2001.</p>
+
+        <h3>Construction and Challenges</h3>
+        <p class="lead">Designed by Michel Virlogeux and Norman Foster, the
+          viaduct's construction overcame challenges of deep valley terrain and
+          environmental impact. It cost €394 million (US$424 million) and took
+          three years to complete, opening in December 2004.</p>
+
+        <h3>Architectural Features</h3>
+        <p class="lead">Known for its elegant, minimalist design, the viaduct's
+          slender pylons and cable-stayed structure blend with the
+          landscape.</p>
+
+        <h3>Impact and Legacy</h3>
+        <p class="lead">The Millau Viaduct is celebrated for its engineering
+          innovation, enhancing regional transportation efficiency and inspiring
+          similar projects worldwide. It received the 2006 Outstanding Structure
+          Award.</p>
+      </div>
+    </div>
+    <div class="image-container">
+      <div data-aos="fade-down-left"
+        data-aos-duration="1000">
+        <img src="./pexels-arnaud-vigne-36746332-11750363.jpg"
+          alt="Placeholder Image">
+      </div>
+    </div>
+  </div>
+<!-- Cards -->
+<div class="wrapper">
+  <h1>Featured Bridges</h1>
+  <div class="cols">
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(./pexels-david-alvarez-16924-77630.jpg)">
+						<div class="inner">
+							<p>Lusitania Bridge</p>
+              <span>Mérida, Spain</span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+						  <p>The Lusitania Bridge, completed in 1991 and spanning 480 meters over the Guadiana River in Mérida, Spain, is renowned for its design by Santiago Calatrava.</p>
+              <a href="./learn1/learn.html"
+              class="btn btn-dark">Learn More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(./cropped-736-552-991342.jpg)">
+						<div class="inner">
+							<p>Nanpu <br>Bridge</p>
+              <span>Shanghai,China</span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>The Nanpu Bridge in China is a cable-stayed bridge completed in 1991, famous for its distinctive spiral design and its impressive height of 57 meters, making it a landmark in Shanghai.</p>
+              <a href="learn2/learn2.html"
+              class="btn btn-dark">Learn More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(./pexels-arnaud-vigne-36746332-11750363.jpg)">
+						<div class="inner">
+							<p>Millau Viaduct</p>
+              <span> Aveyron, France</span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>The Millau Viaduct is a cable-stayed bridge in southern France, completed in 2004, and known for being the tallest bridge in the world with a height of 343 meters.</p>
+              <a href="learn3/learn3.html"
+                class="btn btn-dark">Learn More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+      <div class="col" ontouchstart="this.classList.toggle('hover');">
+				<div class="container">
+					<div class="front" style="background-image: url(./pexels-sander-26611419.jpg)">
+						<div class="inner">
+							<p>Pont du <br> Gard</p>
+              <span>30210 Vers,France</span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+							<p>The Pont du Gard, an ancient Roman aqueduct near Nîmes, France, built around 19 BC, showcases Roman engineering in water transportation over challenging terrain.</p>
+              <a href="learn4/learn4.html"
+                class="btn btn-dark">Learn More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+ </div>
+ <section class="about-section">
+  <div class="container">
+    <div data-aos="zoom-in-up"
+      data-aos-duration="2000">
+      <h2>About Amazing Bridges</h2>
+      <p>Amazing Bridges is your ultimate guide to the world's most remarkable
+        bridges, showcasing engineering marvels that span rivers, valleys, and
+        oceans. We delve into their rich history, intricate architecture, and
+        construction techniques. Whether you're fascinated by ancient bridges
+        with enduring stories, modern feats of engineering pushing boundaries,
+        or the artistic beauty and cultural significance of these structures,
+        Amazing Bridges offers comprehensive insights. Our content includes
+        visitor guides for planning immersive visits, ensuring you experience
+        these iconic landmarks to the fullest. Join us in exploring the world
+        of bridges, where innovation meets artistry, and each span narrates a
+        unique tale of human achievement.</p> <br>
+    </div>
+    <div>
+      <a href="./bridgejourney/bridgejourney.html"
+       class="btn btn dark" id="plan">Plan Your Bridge Journey</a>
+    </div>
+  </div>
+</section>
+    <!-- Footer -->
+        <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+          <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+            <div class="row">
+              <div class="col-lg-3 mb-3">
+                <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="Bootstrap">
+                  <span class="fs-5"><h3>Amazing Bridge</h3></span>
+                </a>
+                <ul class="list-unstyled small">
+                  <h5>At Amazing Bridge, we celebrate the architectural marvels and engineering feats of bridges worldwide. Explore stunning images and fascinating histories of these iconic structures with us.</h5><br>
+                </ul>
+              </div>
+              <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li class="mb-2"><a href="./index.html">Home</a></li>
+                  <li class="mb-2"><a href="./about/about.html">About Us</a></li>
+                  <li class="mb-2"><a href="./contact/contact.html">Contact Us</a></li>
+                  <li class="mb-2"><a href="./Gallery/gallery.html">Gallery</a></li>
+                  <li class="mb-2"><a href="./Feedback/feedback.html">Feedback</a></li>
+                </ul>
+              </div>
+              <div class="col-6 col-lg-2 mb-3">
+                <h5>Categories</h5>
+                <ul class="list-unstyled">
+                  <li class="mb-2"><a href="./category/Longest Bridges/longest.html">Longest Bridges</a></li>
+                  <li class="mb-2"><a href="./category/Highest Bridges/highest.html">Highest Bridges</a></li>
+                  <li class="mb-2"><a href="./category/Tallest Bridges/tallest.html">Tallest Bridges</a></li>
+                  <li class="mb-2"><a href="./category/Oldest Bridges/oldest.html">Oldest Bridges</a></li>
+                </ul>
+              </div>
+              <div class="col-6 col-lg-2 mb-3">
+                <h5>Bridges Journey</h5>
+                <ul class="list-unstyled">
+                  <li class="mb-2"><a href="./bridgejourney/bridgejourney.html">Bridges Journey</a></li>
+                  <li class="mb-2"><a href="./bridges/bridges.html">Bridges</a></li>
+                  <li class="mb-2"><a href="./bridgejourney/bookticket/bookticket.html">Bookticket</a></li>
+                  <li class="mb-2"><a href="./bridgejourney/guide/guide.html">Bridges Guides</a></li>
+                  <li class="mb-2"><a href="./Site Map/sitemap.html">Site Map</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+    <!-- Scripts -->
+    <script src="./index.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+      function toggleMenu() {
+        const navItems = document.querySelector('.navitems');
+        navItems.classList.toggle('show');
+      }
+    </script>
+
+    <!-- Scripts -->
+    <script src="./index.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  </body>
+</html>

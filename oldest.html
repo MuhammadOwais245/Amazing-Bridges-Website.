@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oldest Bridges - Amazing Bridges</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      /* CSS for dropdown */
+          .dropdown {
+            position: relative;
+            display: inline-block;
+          }
+        
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 10%;
+          }
+        
+          .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+          }
+        
+          .dropdown:hover .dropdown-content {
+            display: block;
+          }
+        
+          /* Reset padding and margin for all elements */
+          body {
+            font-family: 'Arial, Helvetica, sans-serif';
+            margin: 0;
+            padding: 0;
+          }
+        
+          /* Navbar styles */
+          .navbar {
+            padding: 20px;
+            background-color: transparent;
+            transition: all 2s;
+          }
+        
+          .navbar .logo {
+            font-size: 24px;
+            margin-right: 20px;
+            margin-left: 10px;
+          }
+        
+          .navbar .navitems {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+          }
+        
+          .navbar li {
+            margin-right: 20px;
+          }
+        
+          .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+          }
+        
+          .navbar {
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            z-index: 100;
+            min-height: 80px;
+            flex-wrap: wrap;
+            align-items: center;
+            font-size: 18px;
+            margin-top: 5px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.137);
+            backdrop-filter: blur(9.5px);
+            -webkit-backdrop-filter: blur(9.5px);
+            border-radius: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.18);
+          }
+        
+          .navbar .toggle-btn {
+            color: black;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            margin-right: 50px;
+          }
+        
+          .navbar div a {
+            display: flex;
+            justify-content: center;
+            font-size: 35px;
+            font-weight: 500;
+            font-family: 'Arial, Helvetica, sans-serif';
+            padding-left: 20px;
+            color: #f0f2f0;
+            text-decoration: none;
+          }
+        
+          div .navitems {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+            padding-right: 20px;
+            align-items: center;
+          }
+        
+          div .navitems a {
+            color: #f0f2f0;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 400;
+            font-family: 'Arial, Helvetica, sans-serif';
+          }
+        
+          .navbar {
+            background-color: transparent;
+            transition: all 2s;
+          }
+        
+          .logo h1 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #333;
+          }
+        
+          .navitems {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+          }
+        
+          .navitems a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 10px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+          }
+        
+          .navitems a:hover {
+            color: #000;
+          }
+    
+          #bars {
+            color: #fffcfc;
+          }
+        
+          @media (max-width: 768px) {
+            .navbar .nav-container {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+            }
+        
+            .navbar .navitems {
+              flex-direction: column;
+              align-items: flex-start;
+              display: none;
+              width: 100%;
+            }
+        
+            .navbar .navitems a {
+              padding: 10px;
+              width: 100%;
+              box-sizing: border-box;
+            }
+        
+            .navbar .toggle-btn {
+              display: block;
+            }
+        
+            .navbar .navitems.show {
+              display: flex;
+            }
+          }
+        </style>
+
+<style>
+  body, html {
+      height: 100%;
+      margin: 0;
+  }
+
+  .picture {
+      display: flex;
+      justify-content: center; /* Centers the image horizontally */
+      align-items: center; /* Centers the image vertically */
+      height: 100%; /* Full height to center within the viewport */
+  }
+
+  .picture img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .picture img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+</head>
+<body>
+   <!-- Navbar -->
+   <div class="navbar" style="background-color: transparent;transition: all 2s;">
+    <div class="logo">
+        <h1>
+            <a href="../../index.html">Amazing Bridges</a>
+        </h1>
+    </div>
+    <div>
+        <ul class="navitems">
+            <a href="../../index.html"><li>Home</li></a>
+            <a href="../../about/about.html"><li>About</li></a>
+            <a href="../../contact/contact.html"><li>Contact</li></a>
+            <li class="dropdown">
+              <a href="javascript:void(0);" class="dropbtn">Bridges Category</a>
+              <div class="dropdown-content">
+                  <a href="../../category/Longest Bridges/longest.html">Longest Bridge</a>
+                  <a href="../../category/Oldest Bridges/oldest.html">Oldest Bridge</a>
+                  <a href="../../category/Tallest Bridges/tallest.html">Tallest Bridge</a>
+                  <a href="../../category/Highest Bridges/highest.html">Highest Bridge</a>
+              </div>
+          </li>
+            <a href="../../gallery/gallery.html"><li>Gallery</li></a>
+        </ul>
+    </div>
+</div>
+
+    <header class="page-header">
+      <div class="container">
+          <h1>Oldest Bridges</h1><br>
+          <p>Explore some of the Oldest bridges in the world that span vast distances, connecting cities and countries with engineering marvels.</p>
+      </div>
+  </header>
+  
+  <section class="bridge-details">
+      <div class="container">
+          <h2>Ponte Vecchio</h2>
+          <div class="picture">
+          <img src="img43.jpg" alt="Ponte Vecchio">
+          </div>
+          <p><strong>The Ponte Vecchio is a medieval stone closed-spandrel segmental arch bridge over the Arno River, in Florence, Italy.</strong> <strong>Noted for still having shops built along it, as was once common.</strong> <strong>Butchers initially occupied the shops; the present tenants are jewelers, art dealers, and souvenir sellers.</strong> <strong>The Ponte Vecchio's two neighboring bridges are the Ponte Santa Trinita and the Ponte alle Grazie.</strong> <strong>The bridge is famous for its history and unique design, which includes three segmental arches.</strong>
+            Construction of the Ponte Vecchio is traditionally believed to have been completed in <strong>1345</strong>, although it is often attributed to Taddeo Gaddi or Neri di Fioravante. The bridge was rebuilt in <strong>1345</strong> after a flood destroyed an earlier version. It was the only bridge across the Arno in Florence until <strong>1218</strong>, and it was not destroyed in World War II, unlike all other bridges in the city, which were destroyed by the retreating Germans.
+            
+            <Strong>In 1565, Giorgio Vasari designed the Vasari Corridor, an overhead walkway connecting the Uffizi to the Pitti Palace that runs along the top of the bridge.</strong> This corridor was built by order of Cosimo I de' Medici to enable the Duke and the Medici family to cross the bridge without having to walk amongst the commoners.
+            
+            <Strong>The Ponte Vecchio has become an iconic symbol of Florence and is renowned for its picturesque views, cultural significance, and historical importance.</strong> <strong>It remains one of the most visited tourist attractions in the city.</strong></p>
+        </div>
+
+
+      <div class="container">
+        <h2>Szechenyi Chain Bridge</h2>
+        <div class="picture">
+        <img src="img44.jpg" alt="Szechenyi Chain Bridge">
+        </div>
+        <p>The <strong>Szechenyi Chain Bridge</strong> is a historic suspension bridge that spans the River Danube, connecting the Buda and Pest sides of Budapest, Hungary. Opened in 1849, it was the first permanent bridge across the Danube in Hungary and is one of the most well-known landmarks in Budapest. The bridge has a length of <strong>375 meters (1,230 feet)</strong> and a width of <strong>14.8 meters (48.6 feet)</strong>, with stone lion statues guarding each end.
+          The construction of the Szechenyi Chain Bridge was spearheaded by Count István Széchenyi, a prominent Hungarian statesman, and designed by English engineer William Tierney Clark. Scottish engineer Adam Clark supervised the construction. The bridge’s design features iron chains, hence the name "Chain Bridge," and large stone arches that support the structure.
+          
+          The Szechenyi Chain Bridge played a crucial role in the economic and social development of Budapest, providing a reliable connection between Buda and Pest. It survived significant damage during World War II but was rebuilt and reopened in 1949, exactly 100 years after its initial opening.
+          
+          Today, the Szechenyi Chain Bridge is not only a vital transportation link but also a symbol of Hungarian national pride and resilience. It is beautifully illuminated at night, making it a favorite subject for photographers and a key attraction for tourists exploring Budapest’s rich history and stunning architecture.</p>
+      </div>
+
+
+    <div class="container">
+      <h2>The Rialto Bridge </h2>
+      <div class="picture">
+      <img src="img45.jpg" alt="The Rialto Bridge ">
+      </div>
+    <p><strong>The Rialto Bridge (Italian: Ponte di Rialto; Venetian: Ponte de Rialto) is the oldest of the four bridges spanning the Grand Canal in Venice, Italy.</strong> Connecting the sestieri (districts) of San Marco and San Polo, it has been rebuilt several times since its first construction as a pontoon bridge in 1173, and is now a significant tourist attraction in the city. The present stone bridge, a single span designed by Antonio da Ponte, began to be constructed in 1588 and was completed in 1591. It is similar to the wooden bridge it succeeded. Two ramps lead up to a central portico. On either side of the portico, the covered ramps carry rows of shops. The engineering of the bridge was considered so audacious that architect Vincenzo Scamozzi predicted future ruin. The bridge has defied its critics to become one of the architectural icons, and top tourist attractions, in Venice. <strong>The first dry crossing of the Grand Canal was a pontoon bridge built in 1181 by Nicolò Barattieri. It was called the Ponte della Moneta, presumably because of the mint that stood near its eastern entrance.</strong> The development and importance of the Rialto market on the eastern bank increased traffic on the floating bridge, so it was replaced in 1255 by a wooden bridge. This structure had two ramps meeting at a movable central section, that could be raised to allow the passage of tall ships. The connection with the market eventually led to a change of name for the bridge. During the first half of the 15th century, two rows of shops were built along the sides of the bridge. The rents brought an income to the State Treasury, which helped maintain the bridge. Maintenance was vital for the timber bridge. It was partly burnt in the revolt led by Bajamonte Tiepolo in 1310. In 1444, it collapsed under the weight of a crowd rushing to see the marriage of the Marquis of Ferrara and it collapsed again in 1524. <strong>The idea of rebuilding the bridge in stone was first proposed in 1503. Several projects were considered over the following decades. In 1551, the authorities requested proposals for the renewal of the Rialto Bridge, among other things.</strong> Plans were offered by famous architects, such as Jacopo Sansovino, Palladio and Vignola, but all involved a Classical approach with several arches, which was judged inappropriate to the situation. Michelangelo also was considered as designer of the bridge.</p>
+    </div>
+
+    <div class="container">
+      <h2>Ponte Sant’Angelo</h2>
+      <div class="picture">
+      <img src="img46.jpg" alt="Ponte Sant’Angelo">
+      </div>
+      <p><strong>Ponte Sant'Angelo</strong> is a famous bridge in Rome, Italy, spanning the Tiber River. Originally known as the <em>Pons Aelius</em>, it was commissioned by Roman Emperor Hadrian and completed in 134 AD. The bridge served as a crucial link between the city center and Hadrian's mausoleum, now known as the Castel Sant'Angelo. In the Middle Ages, it was renamed Ponte Sant'Angelo, after a nearby church dedicated to the Archangel Michael.The bridge is characterized by its stunning architecture, featuring travertine marble and five arches adorned with ancient sculptures of angels, designed by Gian Lorenzo Bernini and his pupils in the 17th century. These sculptures depict different Biblical figures and represent themes such as the Passion of Christ.<strong>Ponte Sant’Angelo</strong> is one of the most famous Roman bridges in the world. The bridge was commissioned by the Roman Emperor Hadrian to span the Tiber River from the city center in Rome to his newly constructed mausoleum, which is now known as the Castel Sant’Angelo. In the past, the bridge was called <em>Pons Aelius</em>, meaning the Bridge of Hadrian.</p>
+
+    </div>
+
+    <div class="container">
+      <h2>West Montrose Covered Bridge</h2>
+      <div class="picture">
+      <img src="img47.jpg" alt="West Montrose Covered Bridge">
+      </div>
+      <p><strong>West Montrose Covered Bridge, also known as the "Kissing Bridge," is a covered bridge in West Montrose</strong>, Ontario, within Waterloo Region, one of the oldest covered bridges in Canada. The bridge is the only remaining covered bridge in Ontario and the second oldest surviving bridge in the Region of Waterloo. In 2015, the total number of surviving covered bridges in Canada was below 200. John Bear, who had previously built barns, built the bridge in 1880–1881, mostly of oak and white pine. The total cost to the Township of Woolwich was $3,197.50. The structure can still be used by pedestrians, buggy traffic and vehicles weighing less than three tonnes for crossing the Grand River. Since 1998, it has been owned and maintained by the Regional Municipality of Waterloo. The bridge's original design was described as a "two-span hybrid Howe truss" or as a "hybrid Queen Post – Howe timber configuration" with two louvred windows. Additional windows, visible today, were added at some later date. The entire structure was originally built of wood. Its weight was supported by 15 piles driven deep into the river bed. At the time of construction, the estimated useful life of the structure was 70 to 80 years. That was significantly increased with subsequent restorations. The primary modifications during restorations added concrete and steel parts to strengthen the aging structure. However, the current visible form of the bridge remains true to the original design.</p>
+    </div>
+
+  </section>
+
+  
+   <!-- Footer -->
+   <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+    <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+      <div class="row">
+        <div class="col-lg-3 mb-3">
+          <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="Bootstrap">
+            <span class="fs-5"><h3>Amazing Bridge</h3></span>
+          </a>
+          <ul class="list-unstyled small">
+            <h5>At Amazing Bridge, we celebrate the architectural marvels and engineering feats of bridges worldwide. Explore stunning images and fascinating histories of these iconic structures with us.</h5><br>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+          <h5>Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="../../index.html">Home</a></li>
+            <li class="mb-2"><a href="../../about/about.html">About Us</a></li>
+            <li class="mb-2"><a href="../../contact/contact.html">Contact Us</a></li>
+            <li class="mb-2"><a href="../../Gallery/gallery.html">Gallery</a></li>
+            <li class="mb-2"><a href="../../Feedback/feedback.html">Feedback</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Categories</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="../../category/Longest Bridges/longest.html">Longest Bridges</a></li>
+            <li class="mb-2"><a href="../../category/Highest Bridges/highest.html">Highest Bridges</a></li>
+            <li class="mb-2"><a href="../../category/Tallest Bridges/tallest.html">Tallest Bridges</a></li>
+            <li class="mb-2"><a href="../../category/Oldest Bridges/oldest.html">Oldest Bridges</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Bridges Journey</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="../../bridgejourney/bridgejourney.html">Bridges Journey</a></li>
+            <li class="mb-2"><a href="../../bridges/bridges.html">Bridges</a></li>
+            <li class="mb-2"><a href="../../bridgejourney/bookticket/bookticket.html">Bookticket</a></li>
+            <li class="mb-2"><a href="../../bridgejourney/guide/guide.html">Bridges Guides</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

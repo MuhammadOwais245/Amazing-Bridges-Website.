@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tallest Bridges - Amazing Bridges</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      /* CSS for dropdown */
+          .dropdown {
+            position: relative;
+            display: inline-block;
+          }
+        
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 10%;
+          }
+        
+          .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+          }
+        
+          .dropdown:hover .dropdown-content {
+            display: block;
+          }
+        
+          /* Reset padding and margin for all elements */
+          body {
+            font-family: 'Arial, Helvetica, sans-serif';
+            margin: 0;
+            padding: 0;
+          }
+        
+          /* Navbar styles */
+          .navbar {
+            padding: 20px;
+            background-color: transparent;
+            transition: all 2s;
+          }
+        
+          .navbar .logo {
+            font-size: 24px;
+            margin-right: 20px;
+            margin-left: 10px;
+          }
+        
+          .navbar .navitems {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+          }
+        
+          .navbar li {
+            margin-right: 20px;
+          }
+        
+          .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+          }
+        
+          .navbar {
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            z-index: 100;
+            min-height: 80px;
+            flex-wrap: wrap;
+            align-items: center;
+            font-size: 18px;
+            margin-top: 5px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.137);
+            backdrop-filter: blur(9.5px);
+            -webkit-backdrop-filter: blur(9.5px);
+            border-radius: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.18);
+          }
+        
+          .navbar .toggle-btn {
+            color: black;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            margin-right: 50px;
+          }
+        
+          .navbar div a {
+            display: flex;
+            justify-content: center;
+            font-size: 35px;
+            font-weight: 500;
+            font-family: 'Arial, Helvetica, sans-serif';
+            padding-left: 20px;
+            color: #f0f2f0;
+            text-decoration: none;
+          }
+        
+          div .navitems {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+            padding-right: 20px;
+            align-items: center;
+          }
+        
+          div .navitems a {
+            color: #f0f2f0;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 400;
+            font-family: 'Arial, Helvetica, sans-serif';
+          }
+        
+          .navbar {
+            background-color: transparent;
+            transition: all 2s;
+          }
+        
+          .logo h1 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #333;
+          }
+        
+          .navitems {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+          }
+        
+          .navitems a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 10px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+          }
+        
+          .navitems a:hover {
+            color: #000;
+          }
+    
+          #bars {
+            color: #fffcfc;
+          }
+        
+          @media (max-width: 768px) {
+            .navbar .nav-container {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+            }
+        
+            .navbar .navitems {
+              flex-direction: column;
+              align-items: flex-start;
+              display: none;
+              width: 100%;
+            }
+        
+            .navbar .navitems a {
+              padding: 10px;
+              width: 100%;
+              box-sizing: border-box;
+            }
+        
+            .navbar .toggle-btn {
+              display: block;
+            }
+        
+            .navbar .navitems.show {
+              display: flex;
+            }
+          }
+        </style>
+
+<style>
+  body, html {
+      height: 100%;
+      margin: 0;
+  }
+
+  .picture {
+      display: flex;
+      justify-content: center; /* Centers the image horizontally */
+      align-items: center; /* Centers the image vertically */
+      height: 100%; /* Full height to center within the viewport */
+  }
+
+  .picture img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .picture img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar" style="background-color: transparent;transition: all 2s;">
+    <div class="logo">
+        <h1>
+            <a href="../../index.html">Amazing Bridges</a>
+        </h1>
+    </div>
+    <div>
+        <ul class="navitems">
+            <a href="../../index.html"><li>Home</li></a>
+            <a href="../../about/about.html"><li>About</li></a>
+            <a href="../../contact/contact.html"><li>Contact</li></a>
+            <li class="dropdown">
+              <a href="javascript:void(0);" class="dropbtn">Bridges Category</a>
+              <div class="dropdown-content">
+                  <a href="../../category/Longest Bridges/longest.html">Longest Bridge</a>
+                  <a href="../../category/Oldest Bridges/oldest.html">Oldest Bridge</a>
+                  <a href="../../category/Tallest Bridges/tallest.html">Tallest Bridge</a>
+                  <a href="../../category/Highest Bridges/highest.html">Highest Bridge</a>
+              </div>
+          </li>
+            <a href="../../gallery/gallery.html"><li>Gallery</li></a>
+        </ul>
+    </div>
+</div>
+
+    <header class="page-header">
+      <div class="container">
+          <h1>Tallest Bridges</h1>
+          <p>Explore some of the Tallest bridges in the world that span vast distances, connecting cities and countries with engineering marvels.</p>
+      </div>
+  </header>
+  
+  <section class="bridge-details">
+      <div class="container">
+          <h2>Golden Gate Bridge</h2>
+          <div class="picture">
+          <img src="img33.jpg" alt="Golden Gate Bridge">
+        </div>
+        <p>The <strong>Golden Gate Bridge</strong> is a suspension bridge spanning the Golden Gate, the one-mile-wide (1.6 km) strait connecting San Francisco Bay and the Pacific Ocean. The structure links the U.S. city of San Francisco, California—the northern tip of the San Francisco Peninsula—to Marin County, carrying both U.S. Route 101 and California State Route 1 across the strait. It also carries pedestrian and bicycle traffic, and is designated as part of U.S. Bicycle Route 95. Recognized by the American Society of Civil Engineers as one of the Wonders of the Modern World, the bridge is one of the most internationally recognized symbols of San Francisco and California.
+
+        The idea of a fixed link between San Francisco and Marin had gained increasing popularity during the late 19th century, but it was not until the early 20th century that such a link became feasible. Joseph Strauss served as <strong>chief engineer</strong> for the project, with Leon Moisseiff, Irving Morrow and Charles Ellis making significant contributions to its design. The bridge opened to the public in 1937 and has undergone various retrofits and other improvement projects in the decades since.
+        
+        The <strong>Golden Gate Bridge</strong> is described in Frommer's travel guide as "possibly the most beautiful, certainly the most photographed, bridge in the world." At the time of its opening in 1937, it was both the longest and the tallest suspension bridge in the world, titles it held until 1964 and 1998 respectively. Its main span is <strong>4,200 feet</strong> (1,280 m) and its total height is <strong>746 feet (227 m)</strong>.</p>        
+      </div>
+      
+    <div class="container">
+      <h2>The 1915 Çanakkale Bridge (Northern Turkey)</h2>
+      <div class="picture">
+      <img src="img35.jpg" alt="The 1915 Çanakkale Bridge">
+    </div>
+      <p><strong>The 1915 Çanakkale Bridge is a road suspension bridge in the province of Çanakkale in northwestern Turkey.</strong> Situated just south of the coastal towns of Lapseki and Gelibolu, the bridge spans the Dardanelles, about 10 km (6.2 mi) south of the Sea of Marmara. <strong>The bridge is the longest suspension bridge in the world—with a main span of 2,023 m (2.023 km; 1.257 mi), the bridge surpasses the Akashi Kaikyo Bridge (1998) in Japan by 32 m (105 ft).</strong> The bridge was officially opened by President Recep Tayyip Erdoğan on 18 March 2022 after roughly five years of construction. <strong>It is the centrepiece of the planned 321-kilometre long (199 mi) US$2.8 billion O-6 motorway, which will connect the O-3 and O-7 motorways in East Thrace to the O-5 motorway in Anatolia.</strong> The year "1915" in the official Turkish name honours an important Ottoman victory in the Gallipoli campaign against firstly a naval engagement followed by a land invasion on the Gallipoli peninsular by the forces of Australia, New Zealand (The ANZACS), France and Great Britain from the 25th April 1915 which were largely evacuated by December of that year. <strong>The bridge is the first fixed crossing over the Dardanelles and the sixth one across the Turkish Straits, after three bridges over the Bosphorus and two tunnels under it.</strong> A Chinese consul general Zhang Meifang uploaded a video to social media on 13 Feb 2023 that inaccurately claimed the bridge in Turkey withstood the recent devastating earthquake thanks to Chinese technology. Zhang wrote, "The bridge built by China in Turkey’s withstood the earthquake #ChinaTech." She also falsely claimed that "a subsidiary of Shudao Group is the sole participant in the construction." The bridge was also unlikely to be in any danger from the devastating magnitude 7.8 earthquake that struck Turkey's southeastern provinces on 6 Feb 2023, as it is located approximately 950 kilometers (590 miles) northwest from Kahramanmaraş, the city closest to the quake's epicenter.</p>
+    </div>
+
+    <div class="container">
+      <h2>Verrazzano-Narrows Bridge</h2>
+      <div class="picture">
+      <img src="img36.jpg" alt="Verrazzano-Narrows Bridge">
+    </div>
+    <p>The <strong>Verrazzano-Narrows Bridge</strong> is an iconic suspension bridge located in New York City, spanning the Narrows, which is the tidal strait that connects Upper New York Bay with Lower New York Bay and separates Staten Island from Brooklyn. It was named after the Italian explorer <strong>Giovanni da Verrazzano</strong>, who was the first European to sail into New York Harbor in 1524. The bridge was completed in <strong>1964</strong> and at that time was the longest suspension bridge in the world, surpassing the Golden Gate Bridge in San Francisco. It's a significant part of New York City's infrastructure and skyline, carrying <strong>Interstate 278</strong> and connecting Staten Island and Brooklyn.The <strong>Verrazzano-Narrows Bridge</strong> has a central span of <strong>4,260 feet (1.30 km; 0.81 mi)</strong>. It was the longest suspension bridge in the world until it was surpassed by the Humber Bridge in the UK in <strong>1981</strong>. The bridge has the <strong>18th-longest main span</strong> in the world, as well as the longest in the Americas. When the bridge was officially named in <strong>1960</strong>, it was misspelled "<strong>Verrazano-Narrows Bridge</strong>" due to an error in the construction contract; the name was officially corrected in <strong>2018</strong>. The <strong>Verrazzano-Narrows Bridge</strong> collects tolls in both directions, although only westbound drivers paid a toll from <strong>1986</strong> to <strong>2020</strong> in an attempt to reduce traffic congestion.</p>
+    </div>
+
+    <div class="container">
+      <h2>Millau Viaduct</h2>
+      <div class="picture">
+      <img src="img37.jpg" alt="Millau Viaduct">
+    </div>
+    <p><strong>The Millau Viaduct (French: Viaduc de Millau, IPA: [vja.dyk də mi.jo]) is a multispan cable-stayed bridge completed in 2004 across the gorge valley of the Tarn near (west of) Millau in the Aveyron department in the Occitanie Region, in Southern France.</strong> The design team was led by engineer Michel Virlogeux and English architect Norman Foster. <strong>As of October 2023, it is the tallest bridge in the world, having a structural height of 336.4 metres (1,104 ft).</strong> The Millau Viaduct is part of the A75–A71 autoroute axis from Paris to Béziers and Montpellier. <strong>The cost of construction was approximately €394 million (US$424 million).</strong> It was built over three years, formally inaugurated on 14 December 2004, and opened to traffic two days later on 16 December. <strong>The bridge has been consistently ranked as one of the greatest engineering achievements of modern times, and received the 2006 Outstanding Structure Award from the International Association for Bridge and Structural Engineering.</strong> In the 1980s, high levels of road traffic near Millau in the Tarn valley were causing congestion, especially in the summer due to holiday traffic on the route from Paris to Spain. A method of bypassing Millau had long been considered, not only to ease the flow and reduce journey times for long-distance traffic, but also to improve the quality of access to Millau for its local businesses and residents. One of the solutions considered was the construction of a road bridge to span the river and gorge valley. The first plans for a bridge were discussed in 1987 by CETE, and by October 1991 the decision was made to build a high crossing of the Tarn by a structure of around 2,500 metres (8,200 ft) in length. During 1993–1994, the government consulted with seven architects and eight structural engineers. During 1995–1996, a second definition study was made by five associated architect groups and structural engineers. In January 1995, the government issued a declaration of public interest to solicit design approaches for a competition.</p>
+    </div>
+
+    <div class="container">
+      <h2>The Vasco da Gama Bridge  (Lisbon)</h2>
+      <div class="picture">
+      <img src="img38.jpg" alt="The Vasco da Gama Bridge ">
+    </div>
+    <p><strong>The Vasco da Gama Bridge (Portuguese: Ponte Vasco da Gama; pronounced [ˈpõtɨ ˈvaʃku ðɐ ˈɣɐmɐ]) is a cable-stayed bridge flanked by viaducts that spans the Tagus River in Parque das Nações in Lisbon, the capital of Portugal. It is the second longest bridge in Europe, after the Crimean Bridge, and the longest one in the European Union. It was built to alleviate the congestion on Lisbon's 25 de Abril Bridge, and eliminate the need for traffic between the country's northern and southern regions to pass through the capital city.</strong> <strong>Construction began in February 1995; the bridge was opened to traffic on 29 March 1998, just in time for Expo 98, the World's Fair that celebrated the 500th anniversary of the discovery by Vasco da Gama of the sea route from Europe to India.</strong> <strong>Along with the 25 April Bridge, the Vasco da Gama is one of two bridges that span the Tagus River in Lisbon.</strong> <strong>The $1.1 billion project was split into four parts, each built by a different company, and supervised by an independent consortium. There were up to 3,300 workers simultaneously on the project, which took 18 months of preparation and 18 months of construction.</strong> <strong>The financing is via a build-operate-transfer system by Lusoponte, a private consortium that receives the first 40 years of tolls for both Lisbon bridges. Lusoponte's capital is 50.4% from Portuguese companies, 24.8% from French, and 24.8% from British.</strong>The bridge has a life expectancy of 120 years, having been designed to withstand wind speeds of 250 km/h (155 mph) and hold up to an earthquake 4.5 times greater than the standards of building resistance in Lisbon.<strong>The deepest foundation piles, up to 2.2 m (7.2 ft) in diameter, were driven down to 95 m (312 ft) under mean sea level.</strong> <strong>Environmental pressure throughout the project resulted in the left-bank viaducts being extended inland to preserve the marshes underneath, as well as the lamp posts throughout the bridge being tilted inwards so as not to cast light on the river below.</strong></p>
+    </div>
+  </section>
+
+  
+  
+    <!-- Footer -->
+    <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+      <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+        <div class="row">
+          <div class="col-lg-3 mb-3">
+            <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="Bootstrap">
+              <span class="fs-5"><h3>Amazing Bridge</h3></span>
+            </a>
+            <ul class="list-unstyled small">
+              <h5>At Amazing Bridge, we celebrate the architectural marvels and engineering feats of bridges worldwide. Explore stunning images and fascinating histories of these iconic structures with us.</h5><br>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+            <h5>Links</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="../../index.html">Home</a></li>
+              <li class="mb-2"><a href="../../about/about.html">About Us</a></li>
+              <li class="mb-2"><a href="../../contact/contact.html">Contact Us</a></li>
+              <li class="mb-2"><a href="../../Gallery/gallery.html">Gallery</a></li>
+              <li class="mb-2"><a href="../../Feedback/feedback.html">Feedback</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2 mb-3">
+            <h5>Categories</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="../../category/Longest Bridges/longest.html">Longest Bridges</a></li>
+              <li class="mb-2"><a href="../../category/Highest Bridges/highest.html">Highest Bridges</a></li>
+              <li class="mb-2"><a href="../../category/Tallest Bridges/tallest.html">Tallest Bridges</a></li>
+              <li class="mb-2"><a href="../../category/Oldest Bridges/oldest.html">Oldest Bridges</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2 mb-3">
+            <h5>Bridges Journey</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="../../bridgejourney/bridgejourney.html">Bridges Journey</a></li>
+              <li class="mb-2"><a href="../../bridges/bridges.html">Bridges</a></li>
+              <li class="mb-2"><a href="../../bridgejourney/bookticket/bookticket.html">Bookticket</a></li>
+              <li class="mb-2"><a href="../../bridgejourney/guide/guide.html">Bridges Guides</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Link to Bootstrap CSS file -->
+      <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous">
+    <!-- Bootstrap JavaScript file -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longest Bridges - Amazing Bridges</title>
+      <!-- Link to custom CSS file -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+      /* CSS for dropdown */
+          .dropdown {
+            position: relative;
+            display: inline-block;
+          }
+        
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 10%;
+          }
+        
+          .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+          }
+        
+          .dropdown:hover .dropdown-content {
+            display: block;
+          }
+        
+          /* Reset padding and margin for all elements */
+          body {
+            font-family: 'Arial, Helvetica, sans-serif';
+            margin: 0;
+            padding: 0;
+          }
+        
+          /* Navbar styles */
+          .navbar {
+            padding: 20px;
+            background-color: transparent;
+            transition: all 2s;
+          }
+        
+          .navbar .logo {
+            font-size: 24px;
+            margin-right: 20px;
+            margin-left: 10px;
+          }
+        
+          .navbar .navitems {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+          }
+        
+          .navbar li {
+            margin-right: 20px;
+          }
+        
+          .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+          }
+        
+          .navbar {
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            z-index: 100;
+            min-height: 80px;
+            flex-wrap: wrap;
+            align-items: center;
+            font-size: 18px;
+            margin-top: 5px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.137);
+            backdrop-filter: blur(9.5px);
+            -webkit-backdrop-filter: blur(9.5px);
+            border-radius: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.18);
+          }
+        
+          .navbar .toggle-btn {
+            color: black;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            margin-right: 50px;
+          }
+        
+          .navbar div a {
+            display: flex;
+            justify-content: center;
+            font-size: 35px;
+            font-weight: 500;
+            font-family: 'Arial, Helvetica, sans-serif';
+            padding-left: 20px;
+            color: #f0f2f0;
+            text-decoration: none;
+          }
+        
+          div .navitems {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+            padding-right: 20px;
+            align-items: center;
+          }
+        
+          div .navitems a {
+            color: #f0f2f0;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 400;
+            font-family: 'Arial, Helvetica, sans-serif';
+          }
+        
+          .navbar {
+            background-color: transparent;
+            transition: all 2s;
+          }
+        
+          .logo h1 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #333;
+          }
+        
+          .navitems {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+          }
+        
+          .navitems a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 10px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+          }
+        
+          .navitems a:hover {
+            color: #000;
+          }
+    
+          #bars {
+            color: #fffcfc;
+          }
+        
+          @media (max-width: 768px) {
+            .navbar .nav-container {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+            }
+        
+            .navbar .navitems {
+              flex-direction: column;
+              align-items: flex-start;
+              display: none;
+              width: 100%;
+            }
+        
+            .navbar .navitems a {
+              padding: 10px;
+              width: 100%;
+              box-sizing: border-box;
+            }
+        
+            .navbar .toggle-btn {
+              display: block;
+            }
+        
+            .navbar .navitems.show {
+              display: flex;
+            }
+          }
+        </style>
+
+<style>
+  body, html {
+      height: 100%;
+      margin: 0;
+  }
+
+  .picture {
+      display: flex;
+      justify-content: center; /* Centers the image horizontally */
+      align-items: center; /* Centers the image vertically */
+      height: 100%; /* Full height to center within the viewport */
+  }
+
+  .picture img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .picture img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+     
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar" style="background-color: transparent;transition: all 2s;">
+    <div class="logo">
+        <h1>
+            <a href="../../index.html">Amazing Bridges</a>
+        </h1>
+    </div>
+    <div>
+        <ul class="navitems">
+            <a href="../../index.html"><li>Home</li></a>
+            <a href="../../about/about.html"><li>About</li></a>
+            <a href="../../contact/contact.html"><li>Contact</li></a>
+            <li class="dropdown">
+              <a href="javascript:void(0);" class="dropbtn">Bridges Category</a>
+              <div class="dropdown-content">
+                  <a href="../../category/Longest Bridges/longest.html">Longets Bridge</a>
+                  <a href="../../category/Oldest Bridges/oldest.html">Oldest Bridge</a>
+                  <a href="../../category/Tallest Bridges/tallest.html">Tallest Bridge</a>
+                  <a href="../../category/Highest Bridges/highest.html">Highest Bridge</a>
+              </div>
+          </li>
+            <a href="../../gallery/gallery.html"><li>Gallery</li></a>
+        </ul>
+    </div>
+</div>
+
+
+    <header class="page-header">
+      <div class="container">
+          <h1>Longest Bridges</h1><br>
+          <p>Explore some of the longest bridges in the world that span vast distances, connecting cities and countries with engineering marvels.</p>
+      </div>
+  </header>
+  
+  <section class="bridge-details">
+      <div class="container">
+          <h2>Qingdao Jiaozhou Bay Bridge</h2>
+          <div class="picture">
+          <img src="img21.jpg" alt="Qingdao Jiaozhou Bay Bridge">
+        </div>
+          <p><strong>Qingdao Jiaozhou Bay Bridge is a 26.7 km (16.6 mi) long roadway bridge in Qingdao, Shandong Province, China, which is part of the 41.58 km (25.84 mi) Jiaozhou Bay Connection Project.</strong> The longest continuous segment of the bridge is 25.9 km (16.1 mi). The Jiaozhou Bay Bridge transects Jiaozhou Bay, which reduces the road distance between Licang District and Huangdao District in Qingdao by 30 km (19 mi), compared with the expressway along the coast of the bay, reducing travel time by 20 to 30 minutes. <strong>The design of the bridge is T-shaped with the main entry and exit points in Huangdao District and Licang District, Qingdao.</strong> A branch to Hongdao Subdistrict is connected by a semi-directional T interchange to the main span. The construction used 450,000 tons of steel and 2.3 million cubic metres (81×10<sup>6</sup> cu ft) of concrete. <strong>The bridge is designed to be able to withstand severe earthquakes, typhoons, and collisions from ships.</strong> It is supported by 5,238 concrete piles. The cross section consists of two beams in total 35 m (115 ft) wide carrying six lanes with two shoulders. The Jiaozhou Bay Bridge has three navigable sections: the Cangkou Channel Bridge to the west, the Dagu Channel Bridge to the east, and the Hongdao Channel Bridge to the north. The 600 metres (2,000 ft) long Cangkou Channel Bridge has the largest span of the entire Jiaozhou Bay Bridge, 260 m (850 ft). The Hongdao Channel Bridge has a span of 120 m (390 ft). The non-navigable sections of the bridge have a span of 60 m (200 ft). <strong>The bridge was the idea of a local official in the Chinese Communist Party who was subsequently dismissed for corruption.</strong> It was designed by the Shandong Gaosu Group. It took four years to build, and employed at least 10,000 people. It opened on 30 June 2011 for traffic. <strong>The Qingdao Jiaozhou Bay tunnel opened on the same day as the bridge.</strong> It transects Jiaozhou Bay, also connecting Huangdao District and the city of Qingdao, between the narrow mouth of the bay, which is 6.17 km (3.83 mi) wide. The tunnel travels underground for 5.55 km (3.45 mi). Concerns regarding the bridge's safety were raised when Chinese media reported that the bridge was opened with faulty elements, such as incomplete crash-barriers, missing lighting, and loose nuts on guard-rails, with workers stating that it would take two months before finishing all of the projects related to the bridge. <strong>Shao Xinpeng, the bridge's chief engineer, claimed that in spite of the safety report, the bridge was safe and ready for traffic, adding that the problems highlighted in the reports were not major.</strong></p>
+        </div><br>
+
+
+      <div class="container">
+        <h2>The Akashi Kaikyo Bridge</h2>
+        <div class="picture">
+        <img src="img22.jpg" alt="The Akashi Kaikyo Bridge">
+      </div>
+      <p><strong>The Akashi Kaikyo Bridge (Japanese: 明石海峡大橋, Hepburn: Akashi Kaikyō Ōhashi) is a suspension bridge which links the city of Kobe on the Japanese island of Honshu to Iwaya, Awaji on Awaji Island.</strong> It is part of the Kobe-Awaji-Naruto Expressway, and crosses the busy and turbulent Akashi Strait (Akashi Kaikyō in Japanese). <strong>It was completed in 1998, and at the time, was the longest central span of any suspension bridge in the world, at 1,991 metres (6,532 ft).</strong> Currently, it is the second-longest, behind the 1915 Çanakkale Bridge that was opened in March 2022. The original plan called for a mixed railway-road bridge, but when construction on the bridge began in April 1988, the construction was restricted to road only, with six lanes. Actual construction did not begin until May 1988 and involved more than 100 contractors. <strong>The Great Hanshin Earthquake in January 1995 did not do substantial damage to the bridge due to anti-seismic building methods.</strong> Construction was finished on time in September 1996. <strong>The bridge was opened for traffic on April 5, 1998, in a ceremony officiated by the then-Crown Prince Naruhito and his spouse Crown Princess Masako of Japan along with Construction Minister Tsutomu Kawara.</strong></p>
+      </div>
+
+
+    <div class="container">
+      <h2>The Confederation Bridge</h2>
+      <div class="picture">
+      <img src="img23.jpg" alt="The Confederation Bridge">
+    </div>
+    <p><strong>The Confederation Bridge is a box-girder bridge that spans the Abegweit Passage of the Northumberland Strait, connecting Prince Edward Island with mainland New Brunswick, Canada.</strong> <strong>on May 31, 1997, it is the longest bridge in the world crossing ice-covered water, stretching 12.9 kilometers (8 miles)</strong>. The bridge carries two lanes of traffic and significantly reduces travel time between the island and the mainland, which previously relied on ferries. 
+      Construction of the Confederation Bridge began in October 1993 and faced numerous challenges, including harsh weather conditions and the technical complexities of building in an ice-prone area. The project employed thousands of workers and was completed on schedule. The bridge's construction utilized high-strength concrete and steel to ensure durability and withstand the region's environmental conditions.
+      
+      The Confederation Bridge was officially opened in a ceremony attended by Canadian officials, including then-Prime Minister Jean Chrétien. Its completion marked a significant milestone in Canadian engineering and transportation infrastructure, greatly enhancing the connectivity of Prince Edward Island.
+      
+      Today, the Confederation Bridge stands as a symbol of modern engineering prowess and is a vital transportation link for residents, tourists, and commercial traffic. Its architectural design and significance in Canadian infrastructure make it an important landmark in the country.</p>      
+    </div>
+
+    <div class="container">
+      <h2>The Sydney Harbour Bridge</h2>
+      <div class="picture">
+      <img src="img24.jpg" alt="The Sydney Harbour Bridge">
+    </div>
+    <p>The <strong>Sydney Harbour Bridge</strong> is an iconic steel through arch bridge across Sydney Harbour, connecting the Sydney central business district (CBD) with the North Shore. Opened in 1932, it remains one of the longest steel-arch bridges in the world, with a span of <strong>1,149 meters (3,770 feet)</strong>. The bridge accommodates <strong>eight traffic lanes, two rail lines, a pedestrian walkway, and cycling path</strong>. Construction of the Sydney Harbour Bridge began in 1923 after overcoming financial challenges and a legal dispute over the design. The project employed thousands of workers during the Great Depression, with <strong>16 construction workers tragically losing their lives</strong>. The bridge's design was influenced by the Hell Gate Bridge in New York City, and its construction utilized riveted steel components. The Sydney Harbour Bridge was officially opened to the public on <strong>March 19, 1932</strong>, following a ceremony attended by Australian officials, including Premier Jack Lang and other dignitaries. Its completion marked a significant achievement in Australian engineering and transportation infrastructure, enhancing connectivity between Sydney's CBD and the North Shore. The Sydney Harbour Bridge has since become a symbol of Sydney and an important tourist attraction, with thousands participating in the annual BridgeClimb and New Year's Eve fireworks display. Its architectural design and landmark status contribute to its recognition as one of Australia's most recognizable structures.</p>
+    </div>
+
+   
+
+    <div class="container">
+      <h2>Octavio Frias de Oliveira Bridge</h2>
+      <div class="picture">
+      <img src="img26.jpg" alt="Octavio Frias de Oliveira Bridge">
+      </div>
+      <p>The <strong>Octavio Frias de Oliveira Bridge</strong> is a cable-stayed bridge in São Paulo, Brazil, crossing the Pinheiros River. Opened in May 2008, it is notable for its unique design featuring an X-shaped supporting tower. The bridge spans <strong>290 meters (951 feet)</strong> and stands <strong>138 meters (453 feet)</strong> tall. It supports two curved decks, each carrying two lanes of traffic in opposite directions.
+        The Octavio Frias de Oliveira Bridge was constructed to alleviate traffic congestion and improve connectivity between the districts of Brooklin and Morumbi. Its innovative design incorporates a central tower that supports the entire structure with a network of cables, making it a distinctive landmark in São Paulo.
+        
+        The bridge is named after Octavio Frias de Oliveira, a prominent Brazilian businessman and publisher of the Folha de S.Paulo newspaper. Its construction faced various challenges, including the need for precise engineering to handle the bridge's unique design and heavy traffic load.
+        
+        Today, the Octavio Frias de Oliveira Bridge is not only a critical component of São Paulo's infrastructure but also a symbol of modern engineering and architectural innovation. It has become an iconic feature of the city's skyline and a popular subject for photography and media.</p>
+    </div>
+  </section>
+  
+ 
+  <!-- Footer -->
+  <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+    <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+      <div class="row">
+        <div class="col-lg-3 mb-3">
+          <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="Bootstrap">
+            <span class="fs-5"><h3>Amazing Bridge</h3></span>
+          </a>
+          <ul class="list-unstyled small">
+            <h5>At Amazing Bridge, we celebrate the architectural marvels and engineering feats of bridges worldwide. Explore stunning images and fascinating histories of these iconic structures with us.</h5><br>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+          <h5>Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="../../index.html">Home</a></li>
+            <li class="mb-2"><a href="../../about/about.html">About Us</a></li>
+            <li class="mb-2"><a href="../../contact/contact.html">Contact Us</a></li>
+            <li class="mb-2"><a href="../../Gallery/gallery.html">Gallery</a></li>
+            <li class="mb-2"><a href="../../Feedback/feedback.html">Feedback</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Categories</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="../../category/Longest Bridges/longest.html">Longest Bridges</a></li>
+            <li class="mb-2"><a href="../../category/Highest Bridges/highest.html">Highest Bridges</a></li>
+            <li class="mb-2"><a href="../../category/Tallest Bridges/tallest.html">Tallest Bridges</a></li>
+            <li class="mb-2"><a href="../../category/Oldest Bridges/oldest.html">Oldest Bridges</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Bridges Journey</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="../../bridgejourney/bridgejourney.html">Bridges Journey</a></li>
+            <li class="mb-2"><a href="../../bridges/bridges.html">Bridges</a></li>
+            <li class="mb-2"><a href="../../bridgejourney/bookticket/bookticket.html">Bookticket</a></li>
+            <li class="mb-2"><a href="../../bridgejourney/guide/guide.html">Bridges Guides</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="scripts.js"></script>
+</body>
+</html>  
